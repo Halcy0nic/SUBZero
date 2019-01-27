@@ -201,7 +201,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             if os.path.islink(fullname):
                 displayname = name + "@"
                 # Note: a link to a directory displays with @ and links with /
-            if displayname != "httpsServer.py" and displayname != "wallpaper.jpg": #Do not list httpsServer.py
+            if displayname != "httpsServer.py" and displayname != "wallpaper.jpg" and displayname != "server.pem": #Do not list httpsServer.py, wallpaper, or self signed cert
                 f.write('<li><a href="%s" style=\"color:white\">%s</a>\n' % (urllib.quote(linkname), cgi.escape(displayname))) 
         f.write("</ul>\n<hr>\n</body>\n</html>\n")
         length = f.tell()
