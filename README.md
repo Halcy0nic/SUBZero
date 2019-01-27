@@ -1,7 +1,7 @@
-# SUBZero (Secure USB Backup Zero)
-## A Raspberry Pi Zero Wireless USB NAS
-### This is the main repository for the SUBZero.  Credit for the python https server skeleton code goes to [Rich Moulton](https://github.com/rhmoult/SecurityTools/blob/master/Platform_Independent/Python/httpsWithUpload/src/httpsWithUpload.py).
+# SUBZero (Secure USB Backup Zero) <br /> 
+This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NAS.  Credit for the python https server skeleton code goes to [Rich Moulton](https://github.com/rhmoult/SecurityTools/blob/master/Platform_Independent/Python/httpsWithUpload/src/httpsWithUpload.py).
 
+### HTTPS File Server
 To run the python server as a standalone HTTPS file server first generate a self signed certificate with openssl:
 ``` bash
 $ openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes
