@@ -10,9 +10,9 @@ chmod +x ./subzero.sh && sudo cp ./subzero.sh /usr/local/bin
 sudo mv /etc/dhcpcd.conf /etc/dhcpcd.bak
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.bak
 sudo mv /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.bak
-sudo mv /etc/network/interfaces /etc/interfaces.bak
+sudo mv /etc/network/interfaces /etc/network/interfaces.bak
 
-sudo cp ./interfaces /etc/
+sudo cp ./interfaces /etc/network/
 sudo cp ./dhcpcd.conf /etc/
 sudo cp ./dnsmasq.conf /etc/
 sudo cp ./hostapd.conf /etc/hostapd/
