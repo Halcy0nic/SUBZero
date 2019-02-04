@@ -18,7 +18,7 @@ $ git clone https://github.com/Halcy0nic/SUBZero.git
 $ cd ./SUBZero
 $ sudo chmod +x install.sh && sudo ./install.sh
 ```
-During the installation you will be prompted to enter data for the self signed certificate. You can simply enter a '.' or dummy data for all of the fields when generating the cert.  Once you have installed the SUBZero, reboot the machine and you should see a WiFi Access Point named 'SUBZero' that you can connect to.  Once connected to the SUBZero wireless network you can browse to https://192.168.1.1 and start uploading files .
+During the installation you will be prompted to enter data for the self signed certificate. You can simply enter a '.' or dummy data for all of the fields when generating the cert.  Once you have installed the SUBZero, reboot the machine and you should see a WiFi Access Point named 'SUBZero' that you can connect to with the password 'raspberry'.  Once connected to the SUBZero wireless network you can browse to https://192.168.1.1 and start uploading files .
 <br/> <br />NOTE: Your browser might complain about the cert being invalid (because it's self signed).  Proceed to the webpage anyway and add an exception if necessary.
 
 ### HTTPS File Server

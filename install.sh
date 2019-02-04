@@ -16,3 +16,6 @@ sudo cp ./interfaces /etc/network/
 sudo cp ./dhcpcd.conf /etc/
 sudo cp ./dnsmasq.conf /etc/
 sudo cp ./hostapd.conf /etc/hostapd/
+
+sudo systemctl enable hostapd
+sudo systemctl enable dnsmasq
