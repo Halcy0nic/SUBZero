@@ -1,7 +1,7 @@
 # SUBZero (Secure USB Backup Zero) <br /> 
 This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NAS.  Credit for the python https server skeleton code goes to [Rich Moulton](https://github.com/rhmoult/SecurityTools/blob/master/Platform_Independent/Python/httpsWithUpload/src/httpsWithUpload.py). Get the 3D Printed Case [here](https://www.thingiverse.com/thing:3389059)
 
-[![3D Printed Case](https://github.com/Halcy0nic/SUBZero/blob/master/Pictures/SUBZero.jpg)](https://www.thingiverse.com/thing:3389059)
+[![3D Printed Case](https://github.com/Halcy0nic/SUBZero/blob/master/Pictures/SUBZero5.jpg)](https://www.thingiverse.com/thing:3389059)
 
 ## Features
 * Wireless USB Network Access Storage
@@ -10,7 +10,13 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 * Easy to use HTTPS File Server
 * Built with a $10.00 Raspberry Pi Zero W
 
-### Installation
+## Installation
+
+#### Flashing the Raspberry Pi Zero W with the SUBZero img
+
+The easiest way to get up and running with the SUBZero is by grabbing /img/SUBZero.img and flashing it onto an SD card.  I recommend using [Ethcher](https://www.balena.io/etcher/) for flashing the SD card.  Etcher is easy to use and works on Windows, OSX, and Linux.
+
+#### Installing from source
 To install the SUBZero on your Raspberry Pi Zero W, clone this repository and run the install file.
 
 ``` 
@@ -35,6 +41,3 @@ $ python httpsServer.py
 ```
 The server will look for the cert (server.pem) and wallpaper (wallpaper.jpg) in the same directory as the httpsServer.py file.  To change the wallpaper, simple rename your custom wallpaper to wallpaper.jpg and place it in this directory.
 
-# TODO
-1. Write a SUBZero tutorial
-2. Add SUBZero specific file changes (dnsmasq.conf, interfaces, hostapd.conf)
