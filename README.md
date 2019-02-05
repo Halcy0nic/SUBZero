@@ -1,7 +1,7 @@
 # SUBZero (Secure USB Backup Zero) <br /> 
 This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NAS.  Credit for the python https server skeleton code goes to [Rich Moulton](https://github.com/rhmoult/SecurityTools/blob/master/Platform_Independent/Python/httpsWithUpload/src/httpsWithUpload.py). Get the 3D Printed Case [here](https://www.thingiverse.com/thing:3389059)
 
-[![3D Printed Case](https://github.com/Halcy0nic/SUBZero/blob/master/Pictures/SUBZero5.jpg)](https://www.thingiverse.com/thing:3389059)
+[![3D Printed Case](/Pictures/SUBZero5.jpg)](https://www.thingiverse.com/thing:3389059)
 
 ## Features
 * Wireless USB Network Access Storage
