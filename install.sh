@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update && sudo apt upgrade
-sudo apt -y install hostapd dnsmasq
+sudo apt install -y hostapd dnsmasq
 sudo mkdir -p /var/www/SUBZero/ && sudo cp ./httpsServer.py /var/www/SUBZero && sudo cp wallpaper.jpg /var/www/SUBZero &&  openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes && sudo cp ./server.pem /var/www/SUBZero
  
 chmod +x ./subzero.sh && sudo cp ./subzero.sh /usr/local/bin
@@ -16,6 +16,6 @@ sudo cp ./interfaces /etc/network/
 sudo cp ./dhcpcd.conf /etc/
 sudo cp ./dnsmasq.conf /etc/
 sudo cp ./hostapd.conf /etc/hostapd/
-
+echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"" | sudo tee -a /etc/default/hostapd
 sudo systemctl enable hostapd
 sudo systemctl enable dnsmasq
