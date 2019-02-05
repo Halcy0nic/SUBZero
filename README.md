@@ -4,7 +4,7 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 [![3D Printed Case](/Pictures/SUBZero5.jpg)](https://www.thingiverse.com/thing:3389059)
 
 ## Features
-* Wireless USB Network Access Storage
+* Wireless USB Network Attached Storage
 * Access Point with configurable WPA2 authentication
 * Can act as a router for devices connected to the SUBZero wireless network and provide Internet Access
 * Easy to use HTTPS File Server
