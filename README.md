@@ -6,7 +6,7 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 ## Features
 * Wireless USB Network Attached Storage
 * Access Point with configurable WPA2 authentication
-* Can act as a router for devices connected to the SUBZero wireless network and provide Internet Access
+* Can act as a wireless router for devices connected to the SUBZero wireless network
 * Easy to use HTTPS File Server
 * Built with a $10.00 Raspberry Pi Zero W
 
@@ -41,3 +41,6 @@ $ python httpsServer.py
 ```
 The server will look for the cert (server.pem) and wallpaper (wallpaper.jpg) in the same directory as the httpsServer.py file.  To change the wallpaper, simple rename your custom wallpaper to wallpaper.jpg and place it in this directory.
 
+
+### TODO
+1. Add Delete option to the HTTPS server
