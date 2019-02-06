@@ -4,11 +4,15 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 [![3D Printed Case](/Pictures/SUBZero5.jpg)](https://www.thingiverse.com/thing:3389059)
 
 ## Features
-* Wireless USB Network Attached Storage
+* Wireless Network Access Storage
 * Access Point with configurable WPA2 authentication
-* Can act as a wireless router for devices connected to the SUBZero wireless network
+* Full TCP/IP on the local SUBZero network
+* Can act as a wireless router for devices connected to the SUBZero network, but can also be used *completely offline*
+* IP Masquerading
+* Removable/Replaceable SD card.  This allows you to buy either a large or small SD card depending on your own needs.
 * Easy to use HTTPS File Server
-* Built with a $10.00 Raspberry Pi Zero W
+* Built with a $10.00 Raspberry Pi Zero W running Raspbian Stretch Lite. This fares better than a traditional USB in some cases because the SUBZero is also fully functional computer.
+* Can be run/powered by your phone using a USB to USB-C/Lightning/Micro-USB/etc adapter
 
 ## Installation
 
