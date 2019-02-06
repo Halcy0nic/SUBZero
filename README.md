@@ -31,6 +31,10 @@ $ sudo chmod +x install.sh && sudo ./install.sh
 During the installation you will be prompted to enter data for the self signed certificate. You can simply enter a '.' or dummy data for all of the fields when generating the cert.  Once you have installed the SUBZero, reboot the machine and you should see a WiFi Access Point named 'SUBZero' that you can connect to with the password 'raspberry'.  Once connected to the SUBZero wireless network you can browse to https://192.168.1.1 and start uploading files .
 <br/> <br />NOTE: Your browser might complain about the cert being invalid (because it's self signed).  Proceed to the webpage anyway and add an exception if necessary.
 
+### PI Zero USB Stem
+
+According to [Zerostem](https://zerostem.io), the Pi 'Zero Stem is a PCB shim that turns a Raspberry Pi Zero into a USB dongle. Once the shim is installed, your Raspberry Pi can be plugged directly into a computer or USB hub without any additional cables or power supplies.'  This is much more convenient than using a USB adapter, which would normally be required for a Pi Zero.  Installing the Zero Stem requires some soldering experience.  Once you have a Pi and Zero Stem you can turn it into a USB by soldering the STEM onto the Pi Zero using their [instructions](https://zerostem.io/installation/).
+
 ### HTTPS File Server
 To run the python server as a standalone HTTPS file server first generate a self signed certificate with openssl:
 ``` bash
@@ -45,6 +49,8 @@ $ python httpsServer.py
 ```
 The server will look for the cert (server.pem) and wallpaper (wallpaper.jpg) in the same directory as the httpsServer.py file.  To change the wallpaper, simple rename your custom wallpaper to wallpaper.jpg and place it in this directory.
 
+
+### Routing
 By default, the SUBZero is not configured to route any traffic or provide internet access.  But configuring the device to route traffic on the network is pretty simple.  First, login to the SUBZero and open /etc/sysctl.conf as sudo on the SUBZero with vim/vi/nano.  Uncomment the line containing 'net.ipv4.ip_forward=1' by remove the # from the beginning of the line, save the changes, and return to to terminal.  Assuming you are using wlan0 for your wifi interface and eth0 for your internet connection, execute the following commands on the terminal:
 
 ``` bash
@@ -58,6 +64,10 @@ Lastly open the file /etc/rc.local as sudo and add the following line at the bot
 
 ``` bash
 iptables-restore < /etc/iptables.ipv4.nat 
+```
 
 ### TODO
 1. Add Delete option to the HTTPS server
+
+
+
