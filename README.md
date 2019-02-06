@@ -41,6 +41,19 @@ $ python httpsServer.py
 ```
 The server will look for the cert (server.pem) and wallpaper (wallpaper.jpg) in the same directory as the httpsServer.py file.  To change the wallpaper, simple rename your custom wallpaper to wallpaper.jpg and place it in this directory.
 
+By default, the SUBZero is not configured to route any traffic or provide internet access.  But configuring the device to route traffic on the network is pretty simple.  First, login to the SUBZero and open /etc/sysctl.conf as sudo on the SUBZero with vim/vi/nano.  Uncomment the line containing 'net.ipv4.ip_forward=1' by remove the # from the beginning of the line, save the changes, and return to to terminal.  Assuming you are using wlan0 for your wifi interface and eth0 for your internet connection, execute the following commands on the terminal:
+
+``` bash
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT  
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+$ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+Lastly open the file /etc/rc.local as sudo and add the following line at the bottom right before exit 0:
+
+``` bash
+iptables-restore < /etc/iptables.ipv4.nat 
 
 ### TODO
 1. Add Delete option to the HTTPS server
