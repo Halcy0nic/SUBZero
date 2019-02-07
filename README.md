@@ -11,7 +11,7 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 * 3D Printer (Optional)
 
 ## How it Works
-Just plug in the SUBZero via the USB port and it will broadcast a wireless acccess point name SUBZero that can be connected to.  Once connected, you can browse the https://192.168.1.1 and start uploading/sharing files. This works as a standalone network, meaning *no Internet connection required!*.
+Just plug in the SUBZero to a USB port and it will broadcast a WiFi network named SUBZero (the default password is raspberry for WiFi, and pi:raspberry for the OS.  PLEASE change this once it's up and running).  Once connected to the network, you can browse to https://192.168.1.1 and start uploading/sharing files. This functions as a standalone network, meaning *no Internet connection required!*.
 
 ## Installation
 
@@ -42,7 +42,7 @@ Lots of thanks go to Nick Engmann for this one.  He developed the [3D printed SU
 
 
 ## Routing
-By default, the SUBZero is not configured to route any traffic or provide internet access.  Configuring the device to route traffic on the network is pretty simple though.  I found a [tutorial](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/) by Phil Martin showing how to do this.  First, log in to the SUBZero using the credentials 'Pi:Raspberry' and open /etc/sysctl.conf as sudo with vim/vi/nano.  Uncomment the line containing 'net.ipv4.ip_forward=1' by removing the # from the beginning of the line, save the changes, and return to the terminal.  Assuming you are using wlan0 for your wifi interface and eth0 for your internet connection, execute the following commands on the terminal:
+By default, the SUBZero is not configured to route any traffic or provide internet access.  Configuring the device to route traffic on the network is pretty simple though.  I found a [tutorial](https://frillip.com/using-your-raspberry-pi-3-as-a-wifi-access-point-with-hostapd/) by Phil Martin showing how to do this.  First, log in to the SUBZero using the credentials 'pi:raspberry' (you should change this) and open /etc/sysctl.conf as sudo with vim/vi/nano.  Uncomment the line containing 'net.ipv4.ip_forward=1' by removing the # from the beginning of the line, save the changes, and return to the terminal.  Assuming you are using wlan0 for your WiFi interface and eth0 for your internet connection, execute the following commands on the terminal:
 
 ``` bash
 $ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
