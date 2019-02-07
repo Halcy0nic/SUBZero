@@ -10,6 +10,9 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 * Soldering Station (Optional)
 * 3D Printer (Optional)
 
+## How it Works
+Just plug in the SUBZero via the USB port and it will broadcast a wireless acccess point name SUBZero that can be connected to.  Once connected, you can browse the https://192.168.1.1 and start uploading/sharing files. This works as a standalone network, meaning *no Internet connection required!*.
+
 ## Installation
 
 #### Flashing the Raspberry Pi Zero W with the SUBZero Image
