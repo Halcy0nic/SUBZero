@@ -56,8 +56,21 @@ Lastly open the file /etc/rc.local as sudo and add the following line at the bot
 ``` bash
 iptables-restore < /etc/iptables.ipv4.nat 
 ```
+
+## Expanding the Filesystem
+By default, the Raspbian root file system is around 2GB. However, if you have an SD card with more capacity it's a great idea to go ahead and expand your installation to the entire SD card. This way you can have the maximum amount of file storage on your SUBZero device.
+
+To expand to the filesystem boot up the SUBZero device and open up a terminal and execute the following command
+
+``` bash
+sudo raspi-config
+```
+
+You will be presented with a GUI menu, go ahead and go down to "Advanced Options" and hit enter.
+[![Advanced Options](https://www.raspberrypi.org/documentation/configuration/images/raspi-config.png)]
+
+Then at the second menu hit enter on "Expand Filesystem". You will them be prompted to restart your machine after the operation is over. Then your done with the software side of things.
+[![Expand Filesystem](https://geek-university.com/wp-content/images/raspberry-pi/expand_filesystem_raspbian.jpg?x13092)]
+
 ### TODO
 1. Add Delete option to the HTTPS server
-
-
-
