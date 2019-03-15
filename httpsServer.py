@@ -12,8 +12,8 @@ Enter that path under /path/to/cert
 
 __version__ = "0.2"
 __all__ = ["SimpleHTTPRequestHandler"]
-__author__ = "bones7456"
-__home_page__ = "http://li2z.cn/"
+__author__ = "Halcy0nic"
+__home_page__ = "http://halcyonic.net/"
 __ssl_addition__ = 'rhmoult'
 
 import os
@@ -62,16 +62,24 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_POST(self):
         """Serve a POST request."""
         r, info = self.deal_post_data()
-        print r, info, "by: ", self.client_address
-        f = StringIO()
-        f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
-        f.write("<html>\n<title>Upload Result Page</title>\n")
-        f.write("<body>\n<h2>Upload Result Page</h2>\n")
-        f.write("<hr>\n")
-        if r:
-            f.write("<strong>Success:</strong>")
-        else:
-            f.write("<strong>Failed:</strong>")
+            print r, info, "by: ", self.client_address
+            f = StringIO()
+            f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
+            f.write("<html>\n<title>Upload Result Page</title>\n")
+            f.write("<body background=\"wallpaper.jpg\", style=\'background-size:cover\'>\n\n")
+            f.write("<h2 style=\"color:white\">Upload Result Page</h2>\n")
+            f.write("<hr>\n")
+            if r:
+                f.write("<strong style=\"color:white\">Success: </strong>")
+            else:
+                f.write("<strong style=\"color:white\">Failed: </strong>")
+            f.write("<p style=\"color:white\">")
+            f.write(info)
+            f.write("</p>")
+            f.write("<br><strong><a style=\"color:white\" href=\"%s\">Click here to go back</a></strong>" % self.headers['referer'])
+            f.write("<hr><small style=\"color:white\">Powered By: Halcy0nic & Nick Engmann, check new version at ")
+            f.write("<strong><a style=\"color:white\" href=\"https://github.com/Halcy0nic/SUBZero\">")
+            f.write("here</a></strong>.</small></body>\n</html>\n")
 
         f.write(info)
         f.write("<br><a href=\"%s\">back</a>" % self.headers['referer'])
