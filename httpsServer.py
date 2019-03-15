@@ -133,7 +133,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         if delete:
             self.do_DELETE(delete[0])
             return False, "DELETING"
-        fn = re.findall(r'Content-Disposition.*name="file"; filename="(.*)"', line)
+        fn = re.findall(r'Content-Disposition.*name="file"; filename="([^\/]*)"', line)
         if not fn:
             return False, "Can't find out file name..."
         path = self.translate_path(self.path)
