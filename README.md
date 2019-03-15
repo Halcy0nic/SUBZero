@@ -72,5 +72,10 @@ You will be presented with a GUI menu, go ahead and go down to "Advanced Options
 Then at the second menu hit enter on "Expand Filesystem". You will them be prompted to restart your machine after the operation is over. Then your done with the software side of things.
 [![Expand Filesystem](https://geek-university.com/wp-content/images/raspberry-pi/expand_filesystem_raspbian.jpg?x13092)]
 
-### TODO
-1. Add Delete option to the HTTPS server
+## Contributing
+
+Interested in contributing? Contact either [@Halcy0nic](https://github.com/Halcy0nic) or [@nickengmann](https://github.com/nickengmann) for help getting started.
+
+## License
+
+This project is [MIT licensed](./LICENSE.md).
