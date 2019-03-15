@@ -26,6 +26,7 @@ import mimetypes
 import re
 import sys  # Modification by rmoulton
 import ssl  # Modification by rmoulton
+from subprocess import call
 
 try:
     from cStringIO import StringIO
@@ -62,6 +63,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_POST(self):
         """Serve a POST request."""
         r, info = self.deal_post_data()
+        if info != 'DELETING':
             print r, info, "by: ", self.client_address
             f = StringIO()
             f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
@@ -80,12 +82,34 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             f.write("<hr><small style=\"color:white\">Powered By: Halcy0nic & Nick Engmann, check new version at ")
             f.write("<strong><a style=\"color:white\" href=\"https://github.com/Halcy0nic/SUBZero\">")
             f.write("here</a></strong>.</small></body>\n</html>\n")
+            length = f.tell()
+            f.seek(0)
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.send_header("Content-Length", str(length))
+            self.end_headers()
+            if f:
+                self.copyfile(f, self.wfile)
+                f.close()
 
-        f.write(info)
-        f.write("<br><a href=\"%s\">back</a>" % self.headers['referer'])
-        f.write("<hr><small>Powered By: bones7456, check new version at ")
-        f.write("<a href=\"http://li2z.cn/?s=SimpleHTTPServerWithUpload\">")
-        f.write("here</a>.</small></body>\n</html>\n")
+    def do_DELETE(self, filename):
+        """Serve a DELETE request."""
+        delete_cmd = 'sudo rm -f ' + filename
+        call(delete_cmd, shell=True)
+        f = StringIO()
+        f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
+        f.write("<html>\n<title style=\"color:white\">Upload Result Page</title>\n")
+        f.write("<body background=\"wallpaper.jpg\", style=\'background-size:cover\'>\n\n")
+        f.write("<h2 style=\"color:white\">Delete Result Page</h2>\n")
+        f.write("<hr>\n")
+        f.write("<strong style=\"color:white\">Successfully deleted the File: </strong>")
+        f.write("<p style=\"color:white\">")
+        f.write(filename)
+        f.write("</p>")
+        f.write("<br><strong><a style=\"color:white\" href=\"%s\">Click here to go back</a></strong>" % self.headers['referer'])
+        f.write("<hr><small style=\"color:white\">Powered By: Halcy0nic & Nick Engmann, check new version at ")
+        f.write("<strong><a style=\"color:white\" href=\"https://github.com/Halcy0nic/SUBZero\">")
+        f.write("here</a></strong>.</small></body>\n</html>\n")
         length = f.tell()
         f.seek(0)
         self.send_response(200)
@@ -95,7 +119,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         if f:
             self.copyfile(f, self.wfile)
             f.close()
-
+        
     def deal_post_data(self):
         boundary = self.headers.plisttext.split("=")[1]
         remainbytes = int(self.headers['content-length'])
@@ -105,6 +129,10 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             return False, "Content NOT begin with boundary"
         line = self.rfile.readline()
         remainbytes -= len(line)
+        delete = re.findall(r'Content-Disposition.*name="delete:(.*)"', line)
+        if delete:
+            self.do_DELETE(delete[0])
+            return False, "DELETING"
         fn = re.findall(r'Content-Disposition.*name="file"; filename="(.*)"', line)
         if not fn:
             return False, "Can't find out file name..."
@@ -199,6 +227,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         f.write("<input name=\"file\" type=\"file\" style=\"color:white\"/>")
         f.write("<input type=\"submit\" value=\"upload\"/></form>\n")
         f.write("<hr>\n<ul>\n")
+        f.write("<form ENCTYPE=\"multipart/form-data\" method=\"post\">")
         for name in directory_list:
             fullname = os.path.join(path, name)
             displayname = linkname = name
@@ -210,7 +239,9 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 displayname = name + "@"
                 # Note: a link to a directory displays with @ and links with /
             if displayname != "httpsServer.py" and displayname != "wallpaper.jpg" and displayname != "server.pem": #Do not list httpsServer.py, wallpaper, or self signed cert
-                f.write('<li><a href="%s" style=\"color:white\">%s</a>\n' % (urllib.quote(linkname), cgi.escape(displayname))) 
+                f.write('<li><a href="%s" style=\"color:#808080\">%s</a>\n' % (urllib.quote(linkname), cgi.escape(displayname))) 
+                f.write("<input name=\"delete:%s\" type=\"submit\" value=\"delete\"/>" % cgi.escape(displayname))
+        f.write("</form>\n")        
         f.write("</ul>\n<hr>\n</body>\n</html>\n")
         length = f.tell()
         f.seek(0)
