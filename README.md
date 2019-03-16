@@ -5,7 +5,7 @@ This is the main repository for the SUBZero, a Raspberry Pi Zero Wireless USB NA
 
 ## What You Need
 * Raspberry Pi Zero W
-* Micro SD card
+* Micro SD card (minimum 16GB to use prebuilt image)
 * Pi Zero USB Stem (Optional)
 * Soldering Station (Optional)
 * 3D Printer (Optional)
