@@ -20,7 +20,18 @@ Just plug in the SUBZero to a USB port and it will broadcast a WiFi network name
 The easiest way to get up and running with the SUBZero is by grabbing [SUBZero.tar.bz2](https://github.com/Halcy0nic/SUBZero/releases/tag/1v1) image, untaring it, and flashing it onto an SD card.  I recommend using [Etcher](https://www.balena.io/etcher/) for flashing the SD card.  Etcher is easy to use and works on Windows, OSX, and Linux.
 
 #### Installing from source
-To install the SUBZero on your Raspberry Pi Zero W, clone the SUBZero repository from my [GitHub](https://github.com/Halcy0nic/SUBZero) and run the install script.
+
+First you are going to need to flash Raspbian Stretch Lite/Desktop onto an SD card and placed it inside your Raspberry Pi Zero W. Then boot it up and run the following command
+
+```
+sudo raspi-config
+```
+
+Here you will be dropped into the Raspberry Pi configuration menu where you will be able to connect to a wireless network, change your raspberry pi login information, set your country code, etc. After you are done save your changes and `reboot`
+
+After you reboot we will go ahead and get the device ready to download and install the SUBZero code. First run `sudo apt-get install git -y` in order to install git on the device.
+
+Afterwards, tgit so install the SUBZero on your Raspberry Pi Zero W, clone the SUBZero repository from my [GitHub](https://github.com/Halcy0nic/SUBZero) and run the install script.
 
 ``` 
 $ git clone https://github.com/Halcy0nic/SUBZero.git
