@@ -17,6 +17,7 @@ sudo cp ./dnsmasq.conf /etc/
 sudo cp ./hostapd.conf /etc/hostapd/
 echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"" | sudo tee -a /etc/default/hostapd
 sudo systemctl unmask hostapd
+sudo ldconfig
 sudo systemctl enable hostapd
 sudo systemctl start hostapd
 sudo systemctl enable dnsmasq
