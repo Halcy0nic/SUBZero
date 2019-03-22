@@ -17,7 +17,7 @@ Just plug in the SUBZero to a USB port and it will broadcast a WiFi network name
 
 #### Flashing the Raspberry Pi Zero W with the SUBZero Image
 
-The easiest way to get up and running with the SUBZero is by grabbing [SUBZero.tar.bz2](https://github.com/Halcy0nic/SUBZero/releases/tag/1v1) image, untaring it, and flashing it onto an SD card.  I recommend using [Etcher](https://www.balena.io/etcher/) for flashing the SD card.  Etcher is easy to use and works on Windows, OSX, and Linux.
+The easiest way to get up and running with the SUBZero is by grabbing [SUBZero.tar.bz2](https://github.com/Halcy0nic/SUBZero/releases/tag/1v12) image, untaring it, and flashing it onto an SD card.  I recommend using [Etcher](https://www.balena.io/etcher/) for flashing the SD card.  Etcher is easy to use and works on Windows, OSX, and Linux.
 
 #### Installing from source
 
